@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="layout">
+  <div class="content">
+    <p id="replaced_digits">123456</p>
+    <p id="replaced_letters">abcdef</p>
+    <p id="replaced_alphanumeric">1abcd6</p>
+    <p id="replaced_one">12345 123456 1234567</p>
+    <p id="replaced_all">123456 123456 123456</p>
+    <p id="replaced_in_quotes">"123456"</p>
+    <p id="not_replaced_in_quotes">"1234"</p>
+
+    <!-- not replaced comment 123456 -->
+
+    <code id="not_replaced_code">
+      123456
+    </code>
+
+    <script id="not_replaced_script">
+        alert("123456");
+    </script>
+
+    <svg id="not_replaced_svg">
+      123456
+    </svg>
+
+    <label id="replaced_label" for="not_replaced_select">123456</label>
+
+    <select id="not_replaced_select">
+      <option id="not_replaced_option">123456</option>
+    </select>
+  </div>
+</div>
+<p id="not_replaced_outside">123456</p>
+</body>
+</html>
