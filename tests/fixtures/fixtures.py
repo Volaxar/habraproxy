@@ -29,7 +29,7 @@ def fixture_processor():
     class StubServer:
         def __init__(self):
             self.server_port = PROXY_PORT
-    
+
     processor = ProxyProcessor(None, None, StubServer())
     yield processor
 
@@ -39,7 +39,6 @@ def fixture_replace_tm(processor):
     f = open(r'./fixtures/main.html')
     _soup = BeautifulSoup(f.read(), 'html.parser')
     f.close()
-    
     body_tag = _soup.find('div', 'layout')
     processor.replace_tm_text(body_tag)
     yield _soup
