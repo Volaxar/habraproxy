@@ -79,6 +79,7 @@ def fixture_driver():
 def fixture_habra_data():
     yield {
         'repl_text': 'ЛУЧШИЕ™',
+        # The account was created specifically for testing the project
         'mail': 'volaxar@mail.ru',
         'password': 'ouwR@0S%OGaLEOkk5$3r#lO$!Q9D',
         'h_title': 'Лучшие публикации за сутки / Хабрахабр',

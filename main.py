@@ -51,7 +51,7 @@ class ProxyProcessor(BaseHTTPRequestHandler):
         finally:
             _socket.close()
 
-    # Исправление ошибок парсинга и разметки  страниц
+    # Correcting parsing and markup errors
     @staticmethod
     def correct_errors(url, content):
         def in_url(pattern):
@@ -60,24 +60,24 @@ class ProxyProcessor(BaseHTTPRequestHandler):
 
             return any(x in url for x in pattern)
 
-        # &plus вместо +
+        # &plus; instead of +
         content = re.sub(r'&plus;', r'+', content)
 
-        # Самозакрывающийся тег <option>
+        # Self-closing <option> tag
         if in_url(['/auth/settings/profile/', '/feedback/']):
             content = re.sub(r'(<option.*?)/>', r'\g<1>>', content)
 
-        # Тег </strong> вместо </p>
+        # Tag </strong> instead of </p>
         if in_url('/ppg/sandbox/'):
             content = re.sub(r'(<p>[^<]*)</strong>', r'\g<1></p>', content)
 
-        # Перепутаны местами тэги </ul> и </div>
+        # The </ul> and </div> tags are interchanged in places
         if in_url('/company/'):
             content = re.sub(r'</li>(\s*)</div>(\s*)</ul>',
                              r'</li>\g<1></ul>\g<2></div>', content
                              )
 
-        # Лишний тег </p>
+        # Extra tag </p>
         if in_url('/info/agreement/'):
             content = content.replace(r'</a>.</p>', r'</a>.')
 
